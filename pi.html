@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ravi Sankar Portfolio</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#2b3550;
+
+    }
+
+    /* SCROLL BAR */
+
+    ::-webkit-scrollbar{
+      width:10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:cyan;
+      border-radius:20px;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      height: 5%;
+      padding:10px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      background:rgba(12, 12, 12, 0.4);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+      animation:navLoad 0.1s ease;
+    }
+
+    @keyframes navLoad{
+      from{
+        transform:translateY(-100px);
+      }
+      to{
+        transform:translateY(0);
+      }
+    }
+
+    nav h1{
+      color:cyan;
+      font-size:32px;
+      letter-spacing:2px;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:30px;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-size:18px;
+      transition:0.4s;
+      position:relative;
+    }
+
+    nav ul li a::after{
+      content:'';
+      position:absolute;
+      width:0%;
+      height:3px;
+      background:cyan;
+      left:0;
+      bottom:-8px;
+      transition:0.4s;
+    }
+
+    nav ul li a:hover::after{
+      width:100%;
+    }
+
+    nav ul li a:hover{
+      color:cyan;
+    }
+
+    /* HOME */
+
+    .home{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+      padding:20px;
+      background:linear-gradient(135deg,#020617,#0f172a,#1e3a8a);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .circle{
+      width:190px;
+      height:190px;
+      border-radius:50%;
+      background:linear-gradient(to right,cyan,blue);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:70px;
+      font-weight:bold;
+      margin-bottom:25px;
+      box-shadow:0 0 50px cyan;
+      animation:float 3s infinite ease-in-out;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-20px);
+      }
+      100%{
+        transform:translateY(0);
+      }
+    }
+
+    .home h2{
+      font-size:70px;
+      margin-bottom:20px;
+      animation:textLoad 1s ease;
+    }
+
+    @keyframes textLoad{
+      from{
+        opacity:0;
+        transform:translateY(100px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .home p{
+      max-width:850px;
+      font-size:21px;
+      line-height:1.9;
+      color:#d1d5db;
+      margin-bottom:35px;
+      animation:fade 2s ease;
+    }
+
+    @keyframes fade{
+      from{
+        opacity:0;
+      }
+      to{
+        opacity:1;
+      }
+    }
+
+    /* BUTTONS */
+
+    .btns a{
+      text-decoration:none;
+      padding:15px 40px;
+      margin:10px;
+      border-radius:40px;
+      font-size:18px;
+      font-weight:bold;
+      transition:0.4s;
+      display:inline-block;
+    }
+
+    .linkedin{
+      background:cyan;
+      color:black;
+    }
+
+    .github{
+      background:white;
+      color:black;
+    }
+
+    .btns a:hover{
+      transform:scale(1.1);
+      box-shadow:0 0 25px cyan;
+    }
+
+    /* SECTION */
+
+    section{
+      padding:110px 10%;
+    }
+
+    .title{
+      text-align:center;
+      font-size:50px;
+      color:cyan;
+      margin-bottom:70px;
+      position:relative;
+    }
+
+    .title::after{
+      content:'';
+      width:120px;
+      height:4px;
+      background:cyan;
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:-15px;
+    }
+
+    /* ABOUT */
+
+    .about{
+      background:#111827;
+      padding:50px;
+      border-radius:25px;
+      line-height:2;
+      font-size:20px;
+      color:#d1d5db;
+      box-shadow:0 0 25px rgba(0,0,0,0.5);
+      transition:0.5s;
+    }
+
+    .about:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 25px cyan;
+    }
+
+    /* SKILLS */
+
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:30px;
+    }
+
+    .skill-card{
+      background:#1e293b;
+      padding:45px;
+      border-radius:25px;
+      text-align:center;
+      font-size:25px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.5s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .skill-card::before{
+      content:'';
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:cyan;
+      top:100%;
+      left:0;
+      transition:0.5s;
+      z-index:0;
+    }
+
+    .skill-card:hover::before{
+      top:0;
+    }
+
+    .skill-card:hover{
+      transform:translateY(-10px) scale(1.05);
+      color:black;
+      box-shadow:0 0 25px cyan;
+    }
+
+    .skill-card span{
+      position:relative;
+      z-index:1;
+    }
+
+    /* PROJECTS */
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:35px;
+    }
+
+    .project-card{
+      background:#1e293b;
+      padding:40px;
+      border-radius:25px;
+      transition:0.5s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .project-card::before{
+      content:'';
+      position:absolute;
+      width:100%;
+      height:5px;
+      background:cyan;
+      top:0;
+      left:0;
+    }
+
+    .project-card:hover{
+      transform:translateY(-12px);
+      box-shadow:0 0 30px cyan;
+    }
+
+    .project-card h3{
+      color:cyan;
+      margin-bottom:20px;
+      font-size:30px;
+    }
+
+    .project-card p{
+      color:#d1d5db;
+      line-height:1.9;
+      font-size:18px;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      background:#111827;
+      padding:60px;
+      border-radius:25px;
+      text-align:center;
+      transition:0.5s;
+    }
+
+    .contact:hover{
+      box-shadow:0 0 25px cyan;
+    }
+
+    .contact p{
+      margin:25px 0;
+      font-size:24px;
+      color:#d1d5db;
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:35px;
+      border-top:1px solid rgba(255,255,255,0.1);
+      color:#94a3b8;
+      font-size:18px;
+    }
+
+    /* SCROLL ANIMATION */
+
+    .hidden{
+      opacity:0;
+      transform:translateY(100px);
+      transition:all 1s;
+    }
+
+    .show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      nav ul{
+        gap:15px;
+      }
+
+      .home h2{
+        font-size:42px;
+      }
+
+      .home p{
+        font-size:18px;
+      }
+
+      .circle{
+        width:150px;
+        height:150px;
+        font-size:55px;
+      }
+
+      .title{
+        font-size:38px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <h1>RAVI</h1>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HOME -->
+
+
+
+  <section class="home" id="home">
+
+    <div class="circle">
+      <img src="C:\Users\ELCOT\Pictures\gwen\IMG-20250716-WA0042[1].jpg" style="height: 100%; width: 100%; border-radius: 100px;">
+    </div>
+
+    <h2 style="color: #94a3b8;">RAVI SANKAR R  </h2>
+
+    <p>
+      Software Developer | Full Stack Developer | UI Designer
+      <br><br>
+      Passionate about building modern websites and responsive web applications.
+      Skilled in frontend and backend development with creative animations and interactive UI designs.
+    </p>
+
+    <div class="btns">
+
+      <a href="https://linkedin.com" target="_blank" class="linkedin">
+        LinkedIn
+      </a>
+
+      <a href="https://github.com" target="_blank" class="github">
+        GitHub
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about" class="hidden">
+
+    <h1 class="title">About Me</h1>
+
+    <div class="about">
+
+      Hello! I'm Ravi Sankar R, an aspiring Full Stack Developer currently pursuing studies at GTN College.
+
+      <br><br>
+
+      I completed Full Stack Development training and internship at Infoway where I gained practical experience in web development.
+
+      <br><br>
+
+      Skilled in HTML, CSS, JavaScript, React JS, Node JS and MongoDB.
+      I enjoy creating modern responsive websites with animations, interactive effects and creative UI designs.
+
+      <br><br>
+
+      My goal is to become a professional software engineer and work on innovative real-world projects.
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills" class="hidden">
+
+    <h1 class="title">Skills</h1>
+
+    <div class="skills">
+
+      <div class="skill-card"><span>HTML</span></div>
+      <div class="skill-card"><span>CSS</span></div>
+      <div class="skill-card"><span>JavaScript</span></div>
+      <div class="skill-card"><span>React JS</span></div>
+      <div class="skill-card"><span>Node JS</span></div>
+      <div class="skill-card"><span>MongoDB</span></div>
+      <div class="skill-card"><span>Python</span></div>
+      <div class="skill-card"><span>GitHub</span></div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects" class="hidden">
+
+    <h1 class="title">Projects</h1>
+
+    <div class="projects">
+
+      <div class="project-card">
+
+        <h3>Portfolio Website</h3>
+
+        <p>
+          Modern responsive portfolio website using HTML, CSS and JavaScript with smooth animations and attractive UI.
+        </p>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>Full Stack Application</h3>
+
+        <p>
+          Frontend and backend integration project using Node JS and MongoDB with CRUD operations.
+        </p>
+
+      </div>
+
+      <div class="project-card">
+
+        <h3>UI Design Project</h3>
+
+        <p>
+          Creative web design project focused on user experience, responsiveness and interactive effects.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="hidden">
+
+    <h1 class="title">Contact</h1>
+
+    <div class="contact">
+
+      <p>📧 ravisanakrrenganatha2007@gmail.com</p>
+
+      <p>💻 github.com/ravisankar</p>
+
+      <p>🔗 linkedin.com/in/ravisankar</p>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Ravi Sankar R | Full Stack Developer
+
+  </footer>
+
+  <script>
+
+    // SCROLL ANIMATION
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+
+    const observer = new IntersectionObserver((entries)=>{
+
+      entries.forEach((entry)=>{
+
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+
+      });
+
+    });
+
+    hiddenElements.forEach((el)=>{
+      observer.observe(el);
+    });
+
+  </script>
+
+</body>
+</html>
